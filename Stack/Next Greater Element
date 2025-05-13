@@ -1,0 +1,27 @@
+I/P =  int[] a = {4,12,5,3,1,2,5,3,1,2,4,6};
+// o/p =         12 -1 6 5 2 5 6 4 2 4 6 -1
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        int[] a = {4,12,5,3,1,2,5,3,1,2,4,6};
+        int[] nge = new int[a.length];
+        int q=0;
+        Stack<Integer> st = new Stack<>();
+        for(int i=a.length - 1;i>=0;i--){
+                while(!st.isEmpty() && st.peek() <= a[i]){
+                st.pop();
+                }
+                if(st.isEmpty()){
+                    nge[i] = -1;
+                }else{
+                    nge[i] = st.peek();
+                   
+                }
+            
+            st.push(a[i]);
+        }
+        for(int w : nge)
+        System.out.print(w+" ");
+    }
+}
